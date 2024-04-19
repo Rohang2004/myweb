@@ -74,6 +74,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .product:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
 
         .product img {
             width: 100%;
@@ -122,9 +125,9 @@
             transform: scale(1.01);
         }
 
-        .download-button {
-            background-color: white;
-            color: black;
+        .view-details {
+            background-color: #0078d4;
+            color: white;
             padding: 12px 24px;
             border: none;
             border-radius: 25px;
@@ -135,9 +138,12 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 10px;
-            border-radius : 10px;
-            border : 1px solid black;
         }
+
+        .view-details:hover {
+            background-color: #005a9e;
+        }
+
         /* Responsive Styles */
         @media screen and (max-width: 768px) {
             input[type="text"] {
@@ -170,8 +176,12 @@
             text-align: center;
             margin: 0;
         }
+        #search-bar{
+
+        }
         p{
-            font-size : small;
+            font-size: smaller;
+        }
     </style>
 </head>
 <body>
@@ -193,23 +203,21 @@
                 image: "fd1.jpg",
                 details: "This Mod is made by Gowtham Gaming YouTube channel and owned by Roadhost \n The mod is made with 98% Realism with various animations options available",
                 samples: ["product1.jpg", "sample2.jpg"],
-                downloadLink: "https://sharemods.com/qxfxt63e879m/KSRTC_BS6.zip.html",
-                downloadLink1: "https://sharemods.com/lhzixm1jrcyg/KSRTC_whitr_copylt.png.html"
+                productPage: "product1.html" // Link to the product detail page
             },
             {
                 name: "KSRTC BS6 bD",
                 image: "bd4.jpg",
                 details: "This Mod is made by Gowtham Gaming YouTube channel and owned by Simplinovus \n The mod is made with 95% realism with various animations.",
                 samples: ["bd2.jpg", "bd3.jpg"],
-                downloadLink: "https://sub4unlock.in/977a4",
-                downloadLink1: "https://sharemods.com/lhgvawr9l5x5/BS6_TEMPLATE_.png.html",
+                productPage: "product2.html" // Link to the product detail page
             },
             {
                 name: "TATA Gill Truck",
                 image: "product2.jpg",
                 details: "Details of Product 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 samples: ["sample3.jpg", "sample4.jpg"],
-                downloadLink: ""
+                productPage: "product3.html" // Link to the product detail page
             },
             // Add more products as needed
         ];
@@ -238,36 +246,17 @@
                 productDetails.classList.add("product-details");
                 productDetails.textContent = product.details;
 
-                const sampleImages = document.createElement("div");
-                sampleImages.classList.add("sample-images");
-                product.samples.forEach(sample => {
-                    const sampleImg = document.createElement("img");
-                    sampleImg.src = sample;
-                    sampleImg.alt = "Sample Image";
-                    sampleImages.appendChild(sampleImg);
-                });
-
-                const downloadButton = document.createElement("button");
-                downloadButton.classList.add("download-button");
-                downloadButton.textContent = "Download Mod";
-                downloadButton.onclick = function() {
-                    window.location.href = product.downloadLink;
-                    return false;
-                };
-
-                const downloadButtonDetail = document.createElement("button");
-                downloadButtonDetail.classList.add("download-button");
-                downloadButtonDetail.textContent = "Download Template";
-                downloadButtonDetail.onclick = function() {
-                    window.location.href = product.downloadLink1;
+                const viewDetailsButton = document.createElement("button");
+                viewDetailsButton.classList.add("view-details");
+                viewDetailsButton.textContent = "View Details";
+                viewDetailsButton.onclick = function() {
+                    window.location.href = product.productPage;
                     return false;
                 };
 
                 productInfo.appendChild(productName);
                 productInfo.appendChild(productDetails);
-                productInfo.appendChild(sampleImages);
-                productInfo.appendChild(downloadButton);
-                productInfo.appendChild(downloadButtonDetail);
+                productInfo.appendChild(viewDetailsButton);
 
                 productDiv.appendChild(img);
                 productDiv.appendChild(productInfo);

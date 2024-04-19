@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMPLINOVUS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-7q4Vzi+19PP1VPhB9FQkfFNf+vBdF7l3vAtjVrBn1dqRNrBlZ5dMxvWI4lTSMvDijpQ72TUvDQbDheV7Hrg3dA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* General Styles */
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f6f8;
-            color: #1a1a1b;
+            background-color: #fff;
+            color: #333;
             overflow-x: hidden;
         }
 
@@ -31,18 +32,15 @@
         /* Main Content Styles */
         main {
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         input[type="text"] {
             width: 100%;
             padding: 15px;
             font-size: 16px;
-            border: 1px solid #b0bec5;
+            border: 1px solid #ccc;
             border-radius: 25px;
-            background-color: #fff;
+            background-color: #f5f5f5;
             outline: none;
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
             margin-bottom: 20px;
@@ -51,7 +49,7 @@
 
         input[type="text"]:focus {
             background-color: #fff;
-            color: #1a1a1b;
+            color: #333;
             border-color: #1565c0;
         }
 
@@ -64,7 +62,7 @@
         }
 
         .product {
-            width: 98%;
+            width: 99%;
             background-color: #fff;
             border-radius: 20px;
             overflow: hidden;
@@ -73,11 +71,11 @@
             flex-direction: column;
             align-items: center;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .product:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
 
         .product img {
@@ -97,7 +95,7 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #1a1a1b;
+            color: #333;
         }
 
         .product-details {
@@ -128,8 +126,8 @@
         }
 
         .download-button {
-            background-color: #1565c0;
-            color: #fff;
+            background-color: #0078d4;
+            color: white;
             padding: 12px 24px;
             border: none;
             border-radius: 25px;
@@ -143,7 +141,7 @@
         }
 
         .download-button:hover {
-            background-color: #0d47a1;
+            background-color: #005a9e;
         }
 
         /* Responsive Styles */
@@ -163,12 +161,14 @@
 
         /* Header Styles */
         .header {
-            background-color: #0d47a1;
+            background-color: #0078d4;
             padding: 20px;
             width: 100%;
             box-sizing: border-box;
-            border-radius: 10px;
+            border-radius: px;
             margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
         }
 
         .header h1, .header p {
@@ -179,11 +179,11 @@
     </style>
 </head>
 <body>
+    <header class="header">
+        <h1>Welcome to SIMPLINOVUS</h1>
+        <p>Your go-to platform for exploring innovative Bussid Mods/Livery</p>
+    </header>
     <main>
-        <div class="header">
-            <h1>Welcome to SIMPLINOVUS</h1>
-            <p>Your go-to platform for exploring innovative Bussid Mods/Livery</p>
-        </div>
         <input type="text" id="search-bar" placeholder="Search for a product..." oninput="searchProducts(this.value)">
         <section id="product-list">
             <!-- Product items will be dynamically added here -->
@@ -217,31 +217,31 @@
             },
             // Add more products as needed
         ];
-    
+
         // Function to display products
         function displayProducts(productsToShow) {
             const productList = document.getElementById("product-list");
             productList.innerHTML = "";
-    
+
             productsToShow.forEach(product => {
                 const productDiv = document.createElement("div");
                 productDiv.classList.add("product");
-    
+
                 const img = document.createElement("img");
                 img.src = product.image;
                 img.alt = product.name;
-    
+
                 const productInfo = document.createElement("div");
                 productInfo.classList.add("product-info");
-    
+
                 const productName = document.createElement("h3");
                 productName.classList.add("product-name");
                 productName.textContent = product.name;
-    
+
                 const productDetails = document.createElement("p");
                 productDetails.classList.add("product-details");
                 productDetails.textContent = product.details;
-    
+
                 const sampleImages = document.createElement("div");
                 sampleImages.classList.add("sample-images");
                 product.samples.forEach(sample => {
@@ -250,7 +250,7 @@
                     sampleImg.alt = "Sample Image";
                     sampleImages.appendChild(sampleImg);
                 });
-    
+
                 const downloadButton = document.createElement("button");
                 downloadButton.classList.add("download-button");
                 downloadButton.textContent = "Download Mod";
@@ -258,7 +258,7 @@
                     window.location.href = product.downloadLink;
                     return false;
                 };
-    
+
                 const downloadButtonDetail = document.createElement("button");
                 downloadButtonDetail.classList.add("download-button");
                 downloadButtonDetail.textContent = "Download Template";
@@ -266,20 +266,20 @@
                     window.location.href = product.downloadLink1;
                     return false;
                 };
-    
+
                 productInfo.appendChild(productName);
                 productInfo.appendChild(productDetails);
                 productInfo.appendChild(sampleImages);
                 productInfo.appendChild(downloadButton);
                 productInfo.appendChild(downloadButtonDetail);
-    
+
                 productDiv.appendChild(img);
                 productDiv.appendChild(productInfo);
-    
+
                 productList.appendChild(productDiv);
             });
         }
-    
+
         // Function to search for products
         function searchProducts(query) {
             const filteredProducts = products.filter(product =>
@@ -287,10 +287,10 @@
             );
             displayProducts(filteredProducts);
         }
-    
+
         // Call function to display all products initially
         displayProducts(products);
     </script>
-    
+
 </body>
 </html>

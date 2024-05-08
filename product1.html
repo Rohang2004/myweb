@@ -172,10 +172,105 @@ p {
                     <li>Launch the game and enjoy the mod!</li>
                 </ol>
             </div><center>
-                <center>
-                    <a href="https://sharemods.com/qxfxt63e879m/KSRTC_BS6.zip.html" class="download-button">Mod</a>
+                
+                    <!-- <a href="" class="download-button">Mod</a> -->
+                    <center>
+                    <style>
+                        .container {
+                          text-align: center;
+                          margin: 20px auto;
+                        }
+                      
+                        .subscribe-btn, .processing, .download-btn, .unlocked {
+                          padding: 12px 20px;
+                          font-size: 8px;
+                          border: none;
+                          border-radius: 6px;
+                          color: white;
+                          cursor: pointer;
+                        }
+                      
+                        .subscribe-btn {
+                          background-color: #3b5998;
+                              width: 120px; 
+                        }
+                      
+                        .processing {
+                          display: none;
+                          background-color: orange; 
+                          width: 100px; 
+                        }
+                      
+                        .download-btn {
+                          background-color: gray; 
+                          width: 100px; 
+                          display: block; 
+                          pointer-events: none; 
+                        }
+                      
+                        .download-btn.unlocked {
+                          background-color: green; 
+                          pointer-events: auto; 
+                        }
+                      
+                        .buttons-container {
+                          display: flex;
+                          justify-content: ;
+                          align-items:center ;
+                          flex-wrap: wrap;
+                        }
+                      
+                        .processing-container {
+                          text-align: center;
+                          margin-bottom: 10px;
+                          margin-top: 10px; 
+                        }
+                      </style>
+                      <center><div class="container">
+                        <div class="buttons-container">
+                          <div class="processing-container">
+                            <button class="subscribe-btn" data-href="https://www.youtube.com/@roadhost2003?sub_confirmation=1" onclick="subscribe()">Subscribe to Unlock</button>
+                            <div class="processing" id="processing-text">Processing...</div>
+                          </div></br>
+                          <div class="download-btn" id="download-btn" onclick="downloadFile()">Download</div>
+                        </div>
+                        <div class="unlocked" id="unlocked-text" style="display: none;">Unlocked!</div>
+                      </div>
+                      </center>
+                      
+                      <script>
+                        function subscribe() {
+                          var subscribeBtn = document.querySelector(".subscribe-btn");
+                          var processingText = document.querySelector(".processing");
+                          var unlockedText = document.querySelector(".unlocked");
+                          var downloadBtn = document.querySelector(".download-btn");
+                      
+                          var subscribeLink = subscribeBtn.getAttribute("data-href");
+                          if (subscribeLink) {
+                            window.open(subscribeLink, "_blank"); 
+                          }
+                      
+                          subscribeBtn.style.display = "none";
+                          processingText.style.display = "block";
+                      
+                          setTimeout(function () {
+                            processingText.style.display = "none";
+                            unlockedText.style.display = "block";
+                            downloadBtn.classList.add("unlocked"); 
+                          }, 7000);
+                        }
+                      
+                        function downloadFile() {
+                          var downloadBtn = document.querySelector(".download-btn");
+                          if (downloadBtn.classList.contains("unlocked")) {
+                            window.location.href = "https://sharemods.com/qxfxt63e879m/KSRTC_BS6.zip.html";
+                          }
+                        }
+                      </script>
                     <a href="https://sharemods.com/lhzixm1jrcyg/KSRTC_whitr_copylt.png.html" class="download-button">Template</a>
-                    <a href="index.html" class="download-button">HOME</a>
+                    <a href="web.html" class="download-button">HOME</a>
+                    </center>
+                </center>
                 </center>
                 </center>
             
